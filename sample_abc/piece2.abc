@@ -1,0 +1,48 @@
+X: 1
+T:Piece No.2
+M:4/4
+L:1/4
+Q:1/4=200
+K:C
+% MEASURE: 1
+V:1
+e1/2 e1/2 z1/2 e1/2 z1/2 c1/2 e |
+V:2
+^F1/2 ^F1/2 z1/2 ^F1/2 z1/2 ^F1/2 ^F |
+V:3
+Z1 |
+% MEASURE: 2
+V:1
+g z G z |
+V:2
+B z3 |
+V:3
+G z3 |
+% MEASURE: 3
+V:1
+c3/2 G1/2 z1 E1 |
+V:2
+Z1 |
+V:3
+Z1 |
+% MEASURE: 4
+V:1
+E1/2 A B _B1/2 A |
+V:2
+Z1 |
+V:3
+Z1 |
+% MEASURE: 5
+V:1
+(3Gfg a f1/2 g1/2 |
+V:2
+Z1 |
+V:3
+Z1 |
+% MEASURE: 6
+V:1
+z1/2 e c1/2 d1/2 B3/2 |
+V:2
+Z1 |
+V:3
+Z1 |
