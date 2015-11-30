@@ -19,50 +19,50 @@ public class Tune {
      * @return the index number of the tune
      */
     public int getNumber(){
-        
+       throw new RuntimeException();
     }
     
     /**
      * @return the title of the tune
      */
     public String getTitle(){
-        
+        throw new RuntimeException();
     }
     
     /**
      * @return the composer of the tune
      */
     public String getComposer(){
-        
+        throw new RuntimeException();
     }
     
     /**
      * @return the key in which the tune is to be played
      */
     public String getKey(){
-        
+        throw new RuntimeException();
     }
     
     /**
      * @return the default duration of a note
      */
-    public float getDefaultLength(){
-        
+    public Meter getDefaultLength(){
+        throw new RuntimeException();
     }
     
     /**
      * @return the meter of the tune
      */
-    public float getMeter(){
-        
+    public Meter getMeter(){
+        throw new RuntimeException();
     }
     
     /**
      * @return how long it should take to play a note
-     * of length getDefaultLength().
+     * of length getDefaultLength(), in seconds.
      */
     public float getTempo(){
-        
+        throw new RuntimeException();
     }
     
     /**
@@ -70,6 +70,6 @@ public class Tune {
      * entirety of the tune.
      */
     public Voice[] getVoices(){
-        
+        throw new RuntimeException();
     }
 }
