@@ -1,7 +1,7 @@
 package abc.player;
 
 /**
- * Immutable class to represent musical meter
+ * Immutable class to represent musical meter or note denomination
  */
 public class Fraction {
     private final int numerator; 
