@@ -1,9 +1,5 @@
 package abc.sound;
 
-import static org.junit.Assert.fail;
-
-import java.io.IOException;
-
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 
