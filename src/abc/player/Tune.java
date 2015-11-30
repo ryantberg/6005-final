@@ -1,6 +1,7 @@
 package abc.player;
 
 import java.io.File;
+import java.util.Map;
 
 /**
  * A tune that can be played back by a MIDI player - essentially
@@ -69,7 +70,7 @@ public class Tune {
      * @return a map from each voice's identifier to the piece
      * of music played by that voice
      */
-    public Map<String,Music> getVoices(){
+    public Map<String, Playable> getVoices(){
         throw new RuntimeException();
     }
     
