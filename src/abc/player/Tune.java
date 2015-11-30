@@ -46,14 +46,14 @@ public class Tune {
     /**
      * @return the default duration of a note
      */
-    public Meter getDefaultLength(){
+    public Fraction getDefaultLength(){
         throw new RuntimeException();
     }
     
     /**
      * @return the meter of the tune
      */
-    public Meter getMeter(){
+    public Fraction getMeter(){
         throw new RuntimeException();
     }
     
@@ -70,6 +70,13 @@ public class Tune {
      * of music played by that voice
      */
     public Map<String,Music> getVoices(){
+        throw new RuntimeException();
+    }
+    
+    /**
+     * Play the Tune
+     */
+    public void play(){
         throw new RuntimeException();
     }
 }
