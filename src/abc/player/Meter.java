@@ -19,10 +19,17 @@ public class Meter {
         assert top>0 && bottom>0;
     }
     
+    /**
+     * @return the top part of this meter
+     */
     public int top(){
         return top;
     }
     
+    
+    /**
+     * @return the bottom part of this meter
+     */
     public int bottom(){
         return bottom;
     }

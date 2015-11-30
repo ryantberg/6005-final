@@ -66,10 +66,10 @@ public class Tune {
     }
     
     /**
-     * @return the array of voices that make up the
-     * entirety of the tune.
+     * @return a map from each voice's identifier to the piece
+     * of music played by that voice
      */
-    public Voice[] getVoices(){
+    public Map<String,Music> getVoices(){
         throw new RuntimeException();
     }
 }
