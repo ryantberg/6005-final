@@ -1,16 +1,16 @@
 package abc.player;
 
 /**
- * Immutable class to represent musical meter or note denomination
+ * Immutable class to represent a fraction (musical meter or note denomination)
  */
 public class Fraction {
     private final int numerator; 
     private final int denominator;
     
     /**
-     * Create a new meter
-     * @param top the number of notes in a measure, must be >0
-     * @param bottom the length of a note, must be >0
+     * Create a new Fraction
+     * @param numerator of the fraction
+     * @param denominator of the fraction
      */
     public Fraction(int numerator, int denominator){
         this.numerator = numerator;
@@ -27,7 +27,7 @@ public class Fraction {
     }
     
     /**
-     * @return the top part of this meter
+     * @return the numerator of this fraction
      */
     public int numerator(){
         return numerator;
@@ -35,7 +35,7 @@ public class Fraction {
     
     
     /**
-     * @return the bottom part of this meter
+     * @return the denominator of this fraction
      */
     public int denominator(){
         return denominator;
