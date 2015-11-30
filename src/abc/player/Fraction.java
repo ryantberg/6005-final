@@ -1,11 +1,11 @@
 package abc.player;
 
 /**
- * Class to represent musical meter
+ * Immutable class to represent musical meter
  */
 public class Fraction {
-    private int numerator; 
-    private int denominator;
+    private final int numerator; 
+    private final int denominator;
     
     /**
      * Create a new meter
