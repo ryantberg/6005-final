@@ -51,7 +51,7 @@ public class Fraction {
      */
     public Fraction add(Fraction addend){
         final int newDenominator = this.denominator()*addend.denominator();
-        final int newNumerator = this.numerator()*newDenominator + addend.numerator()*newDenominator;
+        final int newNumerator = this.numerator()*addend.denominator() + addend.numerator()*this.denominator();
         return new Fraction(newNumerator, newDenominator).reduce();
     }
 }
