@@ -43,4 +43,15 @@ public class Fraction {
     public int denominator(){
         return denominator;
     }
+    
+    /**
+     * Adds two Fractions
+     * @param addend to be added
+     * @return a new fraction corresponding to the fractional sum of this fraction and addend
+     */
+    public Fraction add(Fraction addend){
+        final int newDenominator = this.denominator()*addend.denominator();
+        final int newNumerator = this.numerator()*newDenominator + addend.numerator()*newDenominator;
+        return new Fraction(newNumerator, newDenominator).reduce();
+    }
 }
