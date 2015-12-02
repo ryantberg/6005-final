@@ -5,16 +5,23 @@ import abc.player.Playable;
 import abc.sound.SequencePlayer;
 
 public class Rest implements Playable {
-
+    private final Fraction duration;
+    
+    /**
+     * Construct a new Rest
+     * @param duration of the rest
+     */
+    public Rest(Fraction duration) {
+        this.duration = duration;
+    }
+    
     @Override
     public Fraction getLength() {
-        // TODO Auto-generated method stub
-        return null;
+        return duration;
     }
 
     @Override
     public void addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
-        // TODO Auto-generated method stub
 
     }
 
