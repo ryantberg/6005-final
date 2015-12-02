@@ -12,16 +12,20 @@ public class Concat implements Playable {
     
     /**
      * Create a new Concat 
-     * @param subPlayables The playables to be played sequentially within this Concat
+     * @param subPlayables The playables to be played sequentially within this Concat. Must have more than one element.
      */
     public Concat(List<Playable> subPlayables){
         this.subPlayables = subPlayables.toArray(new Playable[0]);
+        assert subPlayables.size() > 0;
     }
     
     @Override
     public Fraction getLength() {
-        // TODO Auto-generated method stub
-        return null;
+        Fraction length = subPlayables[0].getLength();
+        for(int i=1; i<subPlayables.length; i++){
+            length = length.add(subPlayables[i].getLength());
+        }
+        return length;
     }
 
     @Override

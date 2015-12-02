@@ -21,8 +21,7 @@ public class Note implements Playable {
     
     @Override
     public Fraction getLength() {
-        // TODO Auto-generated method stub
-        return null;
+        return length;
     }
 
     @Override
