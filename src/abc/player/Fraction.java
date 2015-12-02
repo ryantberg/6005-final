@@ -57,6 +57,25 @@ public class Fraction {
         return new Fraction(newNumerator, newDenominator).reduce();
     }
     
+    /**
+     * Returns a double value of this fraction
+     * @return double value
+     */
+    public double valueOf() {
+        return (double)numerator / (double)denominator;
+    }
+    
+    /**
+     * Compares two fractions
+     * @param other Fraction to compare
+     * @return true if this >= other, in a mathematical sense
+     */
+    public boolean greaterThanOrEqual(Fraction other) {
+        final Fraction a = this.reduce();
+        final Fraction b = other.reduce();
+        return a.valueOf() >= b.valueOf();
+    }
+    
     @Override
     public boolean equals(Object thatObject){
         if ( ! (thatObject instanceof Fraction)) { return false; }
