@@ -20,13 +20,7 @@ public class MultiNote implements Playable {
     
     @Override
     public Fraction getLength() {
-        Fraction max = notes.get(0).getLength();
-        for(Note note : notes) {
-            if( !max.greaterThanOrEqual( note.getLength() ) ) {
-                max = note.getLength();
-            }
-        }
-        return max;
+        return notes.get(0).getLength();
     }
 
     @Override
