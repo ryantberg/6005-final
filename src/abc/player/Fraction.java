@@ -4,6 +4,8 @@ import java.math.BigInteger;
 
 /**
  * Immutable class to represent a fraction (musical meter or note denomination)
+ * Two Fractions are considered equal IF AND ONLY IF their numerator and denominator
+ * are both equal. For instance, 1/4 is NOT EQUAL to 2/8. 
  */
 public class Fraction {
     private final int numerator; 
@@ -53,5 +55,22 @@ public class Fraction {
         final int newDenominator = this.denominator()*addend.denominator();
         final int newNumerator = this.numerator()*addend.denominator() + addend.numerator()*this.denominator();
         return new Fraction(newNumerator, newDenominator).reduce();
+    }
+    
+    @Override
+    public boolean equals(Object thatObject){
+        if ( ! (thatObject instanceof Fraction)) { return false; }
+        Fraction that = (Fraction)thatObject;
+        return numerator == that.numerator && denominator == that.denominator;
+    }
+    
+    @Override
+    public int hashCode(){
+        return numerator + denominator;
+    }
+    
+    @Override
+    public String toString(){
+        return numerator + "/" + denominator;
     }
 }
