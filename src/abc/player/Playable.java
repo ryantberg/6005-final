@@ -19,8 +19,9 @@ public interface Playable {
      * @param ticksPerBeat the ticks of the player in a single beat;
      *      must be divisible by the denominator of getLength()
      * @param startTick the tick to start playing this playable on
+     * @return int number of ticks that have progressed, such that startTick + int is the starting point for the next Playable to be played
      * @throws IllegalArgumentException if ticksPerBeat is invalid
      */
-    void addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick)
+    int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick)
             throws IllegalArgumentException;
 }

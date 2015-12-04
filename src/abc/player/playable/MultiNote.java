@@ -24,7 +24,7 @@ public class MultiNote implements Playable {
     }
 
     @Override
-    public void addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
+    public int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
         for(Note note : notes) {
             note.addToPlayer(player, ticksPerBeat, startTick);
         }

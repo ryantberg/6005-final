@@ -21,7 +21,7 @@ public class Rest implements Playable {
     }
 
     @Override
-    public void addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
+    public int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
 
     }
 
