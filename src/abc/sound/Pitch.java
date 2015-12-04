@@ -50,7 +50,7 @@ public class Pitch {
      */
     public static final int OCTAVE = 12;
     
-    private Pitch(int value) {
+    public Pitch(int value) {
         this.value = value;
     }
 

@@ -12,11 +12,11 @@ public class Note implements Playable {
     
     /**
      * Create a new Note 
-     * @param pitch The pitch of the note, in a format that can be fed directly to player.addNote 
+     * @param c a character corresponding to the note
      * @param length The length of the note, as a fraction of a beat
      */
-    public Note(char c, int semitonesUp, Fraction length){
-        this.pitch = new Pitch(c).transpose(semitonesUp);
+    public Note(Pitch pitch, Fraction length){
+        this.pitch = pitch;
         this.length = length;
     }
     
