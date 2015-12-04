@@ -23,7 +23,7 @@ public class ConcatTest {
     public void testGetLengthSingleElement(){
         //Test single note
         List<Playable> concatList = new ArrayList<Playable>();
-        concatList.add(new Note(0,new Fraction(1,4)));
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,4)));
         Concat concat = new Concat(concatList);
         assertEquals(new Fraction(1,4),concat.getLength());
         
@@ -38,10 +38,10 @@ public class ConcatTest {
     public void testGetLengthMultipleElements(){
         //Test two notes separated by a two rests
         List<Playable> concatList = new ArrayList<Playable>();
-        concatList.add(new Note(0,new Fraction(1,8)));
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,8)));
         concatList.add(new Rest(new Fraction(1,4)));
         concatList.add(new Rest(new Fraction(1,4)));
-        concatList.add(new Note(0,new Fraction(1,8)));
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,8)));
         Concat concat = new Concat(concatList);
         assertEquals(new Fraction(3,4),concat.getLength().reduce());
     }
@@ -50,7 +50,7 @@ public class ConcatTest {
     public void testGetLengthNestedConcats(){
         //Test two concatenated concats, each containing a note and a rest
         List<Playable> concatList = new ArrayList<Playable>();
-        concatList.add(new Note(0,new Fraction(1,8)));
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,8)));
         concatList.add(new Rest(new Fraction(1,8)));
         Concat subConcat1 = new Concat(concatList);
         Concat subConcat2 = new Concat(concatList);

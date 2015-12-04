@@ -16,10 +16,10 @@ public class NoteTest {
     
     @Test
     public void testGetLength(){
-        Note testNote = new Note(0,new Fraction(1,4));
+        Note testNote = new Note(Pitch.MIDDLE_C,new Fraction(1,4));
         assertEquals(new Fraction(1,4),testNote.getLength());
         
-        testNote = new Note(0,new Fraction(2,1));
+        testNote = new Note(Pitch.MIDDLE_C,new Fraction(2,1));
         assertEquals(new Fraction(2,1),testNote.getLength());
     }
     
