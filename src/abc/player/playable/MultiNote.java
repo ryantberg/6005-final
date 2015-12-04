@@ -28,6 +28,7 @@ public class MultiNote implements Playable {
         for(Note note : notes) {
             note.addToPlayer(player, ticksPerBeat, startTick);
         }
+        return getLength().numerator()*ticksPerBeat/getLength().denominator();
     }
 
 }

@@ -30,8 +30,11 @@ public class Concat implements Playable {
 
     @Override
     public int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
-        // TODO Auto-generated method stub
-
+        int startPointer = startTick;
+        for(int i = 0; i < subPlayables.length; i++) {
+            startPointer += subPlayables[i].addToPlayer(player, ticksPerBeat, startPointer);
+        }
+        return startPointer-startTick;
     }
 
 }

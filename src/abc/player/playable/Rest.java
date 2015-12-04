@@ -22,7 +22,7 @@ public class Rest implements Playable {
 
     @Override
     public int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
-
+        return ticksPerBeat*duration.numerator()/duration.denominator();
     }
 
 }

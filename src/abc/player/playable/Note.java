@@ -26,8 +26,7 @@ public class Note implements Playable {
 
     @Override
     public int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
-        // TODO Auto-generated method stub
-
+        
     }
 
 }
