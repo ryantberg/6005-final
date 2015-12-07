@@ -28,15 +28,15 @@ public class PlaybackTest {
         
         //Construct a series of notes
         List<Note> chord = new ArrayList<>();
-        chord.add(new Note(new Pitch('C').transpose(Pitch.OCTAVE),new Fraction(1,4)));
+        chord.add(new Note(new Pitch('C').transpose(Pitch.OCTAVE),new Fraction(1,2)));
         chord.add(new Note(new Pitch('G'),new Fraction(1,4)));
         chord.add(new Note(new Pitch('C'),new Fraction(1,1)));
         
         List<Playable> concatList = new ArrayList<>();
+        concatList.add(new Rest(new Fraction(1,1)));
         concatList.add(new MultiNote(chord));
-        //concatList.add(new Rest(new Fraction(1,4)));
-        concatList.add(new Note(new Pitch('G').transpose(Pitch.OCTAVE),new Fraction(1,4)));
-        concatList.add(new Note(new Pitch('C').transpose(Pitch.OCTAVE),new Fraction(1,2)));
+        concatList.add(new Note(new Pitch('G').transpose(Pitch.OCTAVE),new Fraction(1,2)));
+        concatList.add(new Note(new Pitch('C').transpose(Pitch.OCTAVE),new Fraction(1,1)));
         
         for(Playable p : concatList){
             System.out.println(p.getLength());
@@ -45,6 +45,7 @@ public class PlaybackTest {
         Concat masterConcat = new Concat(concatList);
         
         SequencePlayer player = new SequencePlayer(120, 8);
+        System.out.println(masterConcat.getLength());
         masterConcat.addToPlayer(player, 8, 0);
         player.play();
         
