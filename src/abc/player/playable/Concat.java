@@ -1,5 +1,6 @@
 package abc.player.playable;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import abc.player.Fraction;
@@ -35,6 +36,18 @@ public class Concat implements Playable {
             startPointer += subPlayables[i].addToPlayer(player, ticksPerBeat, startPointer);
         }
         return startPointer-startTick;
+    }
+    
+    @Override
+    public int ticksPerBeat(){
+        //Return the least common multiple of all sub-playables
+        int maxTicks = 1;
+        for(Playable playable : subPlayables){
+            int playableMaxTicks = playable.ticksPerBeat();
+            maxTicks = (playableMaxTicks*maxTicks)/
+                    BigInteger.valueOf(playableMaxTicks).gcd(BigInteger.valueOf(maxTicks)).intValue();
+        }
+        return maxTicks;
     }
 
 }

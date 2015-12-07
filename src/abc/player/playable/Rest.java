@@ -24,5 +24,9 @@ public class Rest implements Playable {
     public int addToPlayer(SequencePlayer player, int ticksPerBeat, int startTick) throws IllegalArgumentException {
         return ticksPerBeat*duration.numerator()/duration.denominator();
     }
-
+    
+    @Override
+    public int ticksPerBeat(){
+        return getLength().reduce().denominator();
+    }
 }

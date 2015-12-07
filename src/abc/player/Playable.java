@@ -13,6 +13,13 @@ public interface Playable {
     Fraction getLength();
     
     /**
+     * @return the maximum number of ticks per beat needed to play this Playable. For instance,
+     * a 1/8 note would require 8 ticks per beat, a 1/4-note tuple would require 12 ticks per beat, and
+     * a Playable containing both of those things would require 24 ticks per beat.
+     */
+    int ticksPerBeat();
+    
+    /**
      * Add this Playable to a sequence player.
      * 
      * @param player the player to be added to

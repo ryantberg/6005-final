@@ -1,7 +1,13 @@
 package abc.player;
 
 import java.io.File;
+import java.math.BigInteger;
 import java.util.Map;
+
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiUnavailableException;
+
+import abc.sound.SequencePlayer;
 
 /**
  * A tune that can be played back by a MIDI player - essentially
@@ -59,10 +65,10 @@ public class Tune {
     }
     
     /**
-     * @return how long it should take to play a note
-     * of length getDefaultLength(), in seconds.
+     * @return how many notes of length getDefaultLength()
+     * should be played per minute
      */
-    public float getTempo(){
+    public int getTempo(){
         throw new RuntimeException();
     }
     
@@ -78,6 +84,36 @@ public class Tune {
      * Play the Tune
      */
     public void play(){
-        throw new RuntimeException();
+        try {
+            int ticksPerBeat = 1;
+            double tuneDuration = 0;//tune duration in beats
+            
+            for(Playable voice : getVoices().values()){
+                tuneDuration = Math.max(tuneDuration, voice.getLength().valueOf());
+                //Ticks per beat is least common multiple of all ticks per beat
+                int voiceTicks = voice.ticksPerBeat();
+                ticksPerBeat = (voiceTicks*ticksPerBeat)/
+                        BigInteger.valueOf(voiceTicks).gcd(BigInteger.valueOf(ticksPerBeat)).intValue();
+            }
+            
+            //Create a new sequence player
+            SequencePlayer player = new SequencePlayer(getTempo(), ticksPerBeat);
+            
+            for(Playable voice : getVoices().values()){
+                voice.addToPlayer(player, ticksPerBeat, 0);
+            }
+            
+            player.play();
+            
+            int tuneMilliseconds = (int)(60000*tuneDuration/(getTempo()));
+            Thread.sleep(tuneMilliseconds+1000);
+            
+        } catch (MidiUnavailableException | InvalidMidiDataException e) {
+            System.out.println("Error initializing the MIDI player!");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.out.println("Tune interrupted!");
+            e.printStackTrace();
+        }
     }
 }

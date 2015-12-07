@@ -18,6 +18,10 @@ public class ConcatTest {
     // --------getLength--------
     // Input: Single input, multiple inputs
     //        Rest, Note, Nested Concats
+    //
+    // --------ticksPerBeat--------
+    // Input: Single input, multiple inputs, inputs with un-reduced lengths
+    // Output: 1, equal to some denominator value, equal to no denominator values
     
     @Test
     public void testGetLengthSingleElement(){
@@ -60,5 +64,51 @@ public class ConcatTest {
         Concat testConcat = new Concat(concatList);
         assertEquals(new Fraction(1,2),testConcat.getLength());
     }
-
+    
+    @Test
+    public void testTicksPerBeatWholeNote(){
+        //Test ticksPerBeat with a whole note, should be 1 tick
+        List<Playable> concatList = new ArrayList<Playable>();
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,1)));
+        Concat concat = new Concat(concatList);
+        assertEquals(1,concat.ticksPerBeat());
+        
+        //Should get the same result even when the whole note is defined with length 2/2
+        concatList = new ArrayList<Playable>();
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(2,2)));
+        concat = new Concat(concatList);
+        assertEquals(1,concat.ticksPerBeat());
+    }
+    
+    @Test
+    public void testTicksPerBeatMultipleElements(){
+        //Test ticksPerBeat with a collection of all Playable implementations
+        List<Playable> subConcatList = new ArrayList<Playable>();
+        subConcatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,2)));
+        subConcatList.add(new Rest(new Fraction(1,4)));
+        subConcatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,4)));
+        
+        List<Note> multiNoteList = new ArrayList<Note>();
+        multiNoteList.add(new Note(Pitch.MIDDLE_C.transpose(Pitch.OCTAVE),new Fraction(1,1)));
+        multiNoteList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,1)));
+        
+        List<Playable> concatList = new ArrayList<Playable>();
+        concatList.add(new MultiNote(multiNoteList));
+        concatList.add(new Concat(subConcatList));
+        
+        Concat concat = new Concat(concatList);
+        assertEquals(4,concat.ticksPerBeat());
+    }
+    
+    @Test
+    public void testTicksPerBeatNonequalDenominator(){
+        // Test ticksPerBeat with a list of notes and rests that necessitates finding their
+        // least common multiple to calculate the ticks per beat.
+        List<Playable> concatList = new ArrayList<Playable>();
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,12)));
+        concatList.add(new Rest(new Fraction(1,8)));
+        concatList.add(new Note(Pitch.MIDDLE_C,new Fraction(1,8)));
+        Concat concat = new Concat(concatList);
+        assertEquals(24,concat.ticksPerBeat());
+    }
 }

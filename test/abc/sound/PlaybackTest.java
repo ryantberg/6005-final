@@ -29,7 +29,7 @@ public class PlaybackTest {
         //Construct a series of notes
         List<Note> chord = new ArrayList<>();
         chord.add(new Note(new Pitch('C').transpose(Pitch.OCTAVE),new Fraction(1,2)));
-        chord.add(new Note(new Pitch('G'),new Fraction(1,4)));
+        chord.add(new Note(new Pitch('G'),new Fraction(1,2)));
         chord.add(new Note(new Pitch('C'),new Fraction(1,1)));
         
         List<Playable> concatList = new ArrayList<>();
@@ -44,9 +44,11 @@ public class PlaybackTest {
         
         Concat masterConcat = new Concat(concatList);
         
-        SequencePlayer player = new SequencePlayer(120, 8);
-        System.out.println(masterConcat.getLength());
-        masterConcat.addToPlayer(player, 8, 0);
+        int maxTicks = masterConcat.ticksPerBeat();
+        System.out.println(maxTicks);
+        
+        SequencePlayer player = new SequencePlayer(120, maxTicks);
+        masterConcat.addToPlayer(player, maxTicks, 0);
         player.play();
         
         Thread.sleep(7000);

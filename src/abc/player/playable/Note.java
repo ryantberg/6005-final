@@ -33,5 +33,10 @@ public class Note implements Playable {
         
         return noteDuration;
     }
+    
+    @Override
+    public int ticksPerBeat(){
+        return getLength().reduce().denominator();
+    }
 
 }

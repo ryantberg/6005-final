@@ -1,5 +1,6 @@
 package abc.player.playable;
 
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,6 +30,18 @@ public class MultiNote implements Playable {
             note.addToPlayer(player, ticksPerBeat, startTick);
         }
         return getLength().numerator()*ticksPerBeat/getLength().denominator();
+    }
+    
+    @Override
+    public int ticksPerBeat(){
+        //Return the least common multiple of all sub-notes
+        int maxTicks = 1;
+        for(Note note : notes){
+            int noteMaxTicks = note.ticksPerBeat();
+            maxTicks = (noteMaxTicks*maxTicks)/
+                    BigInteger.valueOf(noteMaxTicks).gcd(BigInteger.valueOf(maxTicks)).intValue();
+        }
+        return maxTicks;
     }
 
 }
