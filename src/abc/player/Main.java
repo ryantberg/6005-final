@@ -1,5 +1,7 @@
 package abc.player;
 
+import java.io.IOException;
+
 /**
  * Main entry point of your application.
  */
@@ -15,10 +17,19 @@ public class Main {
      * @param file the name of input abc file
      */
     public static void play(String file) {
-        // YOUR CODE HERE
+        try {
+            Tune.fromFile(file).play();
+        } catch (IOException e) {
+            System.err.println("Failed to open file: "+e.getMessage());
+        }
     }
 
     public static void main(String[] args) {
-        // CALL play() HERE USING ARGS
+        if (args.length == 0) {
+            System.err.println("Usage: java abc.player.Main <filename>");
+            return;
+        }
+        
+        play(args[0]);
     }
 }

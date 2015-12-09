@@ -2,6 +2,10 @@ package abc.parser;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.CharStream;
@@ -76,5 +80,39 @@ public class AbcTuneListenerTest {
         assertEquals(new Fraction(1, 8), tune.getDefaultLength());
         assertEquals(100, tune.getTempo());
         assertEquals("C#", tune.getKey());
+    }
+    
+    // Test that we can load all the sample files.
+    @Test
+    public void testWalksAllSamples() throws IOException {
+        final File sampleDir = new File("sample_abc/");
+        final File[] abcFiles = sampleDir.listFiles((file) -> file.getName().endsWith(".abc"));
+
+        for (File file : abcFiles) {
+            try {
+                final CharStream stream = new ANTLRFileStream(file.getAbsolutePath());
+                AbcLexer lexer = new AbcLexer(stream);
+                lexer.reportErrorsAsExceptions();
+
+                AbcParser parser = new AbcParser(new CommonTokenStream(lexer));
+                parser.addErrorListener(new BaseErrorListener() {
+                    public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
+                            int charPositionInLine, String msg, RecognitionException e) {
+                        return;
+                    }
+                });
+                parser.reportErrorsAsExceptions();
+
+                final ParseTree tree = parser.abcTune();
+                
+                final AbcTuneListener listener = new AbcTuneListener();
+                
+                // This will throw an exception if it fails
+                new ParseTreeWalker().walk(listener, tree);
+            } catch (Exception e) {
+                System.err.println(file);
+                throw e;
+            }
+        }
     }
 }

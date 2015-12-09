@@ -454,8 +454,6 @@ public class AbcTuneListener extends AbcParserBaseListener {
 
 	    final String newVoice = ctx.TEXT().getText();
 	    
-	    assert this.voiceNames.contains(newVoice);
-	    
 	    this.currentVoice = newVoice;
 	    
 	    resetKey();
@@ -481,6 +479,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	        // Remove all of the elements from the note queue.
 	        this.noteQueue.clear();
 	        
+	        // Add this chord.
 	        this.currentMajorSection.add(chord);
 	    }
 	}
@@ -533,14 +532,19 @@ public class AbcTuneListener extends AbcParserBaseListener {
             switch (p.ACCIDENTAL().getText()) {
             case "__":
                 this.keyMap.setOffset(basePitch, KeyMap.DOUBLE_FLAT_OFFSET);
+                break;
             case "_":
                 this.keyMap.setOffset(basePitch, KeyMap.FLAT_OFFSET);
+                break;
             case "=":
                 this.keyMap.setOffset(basePitch, KeyMap.NEUTRAL_OFFSET);
+                break;
             case "^":
                 this.keyMap.setOffset(basePitch, KeyMap.SHARP_OFFSET);
+                break;
             case "^^":
                 this.keyMap.setOffset(basePitch, KeyMap.DOUBLE_SHARP_OFFSET);
+                break;
             default:
                 throw new RuntimeException("Impossible accidental: " + p.ACCIDENTAL().getText());
             }
@@ -596,6 +600,10 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 * Called when we finish a major section in the music.
 	 */
 	private void endMajorSection() {
+	    if (currentMajorSection.isEmpty()) {
+	        return;
+	    }
+
 	    Playable thisSection = new Concat(currentMajorSection);
 	    
 	    if (this.voices.containsKey(this.currentVoice)) {
@@ -651,6 +659,10 @@ public class AbcTuneListener extends AbcParserBaseListener {
      * @return a name for the default voice
      */
     protected static String resolveDefaultVoice(Set<String> definedVoices) {
+        // TODO: this doesn't take into account the fact that new voices
+        //       can be declared inline. If one of those pops up named "default",
+        //       we'll have a problem.
+        
         // if they haven't defined a name "default" (which they probably haven't),
         // use the name "default" for the default voice
         if (!definedVoices.contains(DEFAULT_DEFAULT_VOICE_NAME)) {
