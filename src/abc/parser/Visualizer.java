@@ -37,7 +37,7 @@ public final class Visualizer {
         });
         parser.reportErrorsAsExceptions();
         
-        ParseTree tree = parser.abc_tune();
+        ParseTree tree = parser.abcTune();
         
         Trees.inspect(tree, parser);
     }
