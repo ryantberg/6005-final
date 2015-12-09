@@ -19,181 +19,181 @@ public class AbcParserBaseListener implements AbcParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAbc_tune(AbcParser.Abc_tuneContext ctx) { }
+	@Override public void enterAbcTune(AbcParser.AbcTuneContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAbc_tune(AbcParser.Abc_tuneContext ctx) { }
+	@Override public void exitAbcTune(AbcParser.AbcTuneContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAbc_header(AbcParser.Abc_headerContext ctx) { }
+	@Override public void enterAbcHeader(AbcParser.AbcHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAbc_header(AbcParser.Abc_headerContext ctx) { }
+	@Override public void exitAbcHeader(AbcParser.AbcHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_number(AbcParser.Field_numberContext ctx) { }
+	@Override public void enterFieldNumber(AbcParser.FieldNumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_number(AbcParser.Field_numberContext ctx) { }
+	@Override public void exitFieldNumber(AbcParser.FieldNumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_title(AbcParser.Field_titleContext ctx) { }
+	@Override public void enterFieldTitle(AbcParser.FieldTitleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_title(AbcParser.Field_titleContext ctx) { }
+	@Override public void exitFieldTitle(AbcParser.FieldTitleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOther_fields(AbcParser.Other_fieldsContext ctx) { }
+	@Override public void enterOtherFields(AbcParser.OtherFieldsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOther_fields(AbcParser.Other_fieldsContext ctx) { }
+	@Override public void exitOtherFields(AbcParser.OtherFieldsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_composer(AbcParser.Field_composerContext ctx) { }
+	@Override public void enterFieldComposer(AbcParser.FieldComposerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_composer(AbcParser.Field_composerContext ctx) { }
+	@Override public void exitFieldComposer(AbcParser.FieldComposerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_default_length(AbcParser.Field_default_lengthContext ctx) { }
+	@Override public void enterFieldDefaultLength(AbcParser.FieldDefaultLengthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_default_length(AbcParser.Field_default_lengthContext ctx) { }
+	@Override public void exitFieldDefaultLength(AbcParser.FieldDefaultLengthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_meter(AbcParser.Field_meterContext ctx) { }
+	@Override public void enterFieldMeter(AbcParser.FieldMeterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_meter(AbcParser.Field_meterContext ctx) { }
+	@Override public void exitFieldMeter(AbcParser.FieldMeterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_tempo(AbcParser.Field_tempoContext ctx) { }
+	@Override public void enterFieldTempo(AbcParser.FieldTempoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_tempo(AbcParser.Field_tempoContext ctx) { }
+	@Override public void exitFieldTempo(AbcParser.FieldTempoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_voice(AbcParser.Field_voiceContext ctx) { }
+	@Override public void enterFieldVoice(AbcParser.FieldVoiceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_voice(AbcParser.Field_voiceContext ctx) { }
+	@Override public void exitFieldVoice(AbcParser.FieldVoiceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterField_key(AbcParser.Field_keyContext ctx) { }
+	@Override public void enterFieldKey(AbcParser.FieldKeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_key(AbcParser.Field_keyContext ctx) { }
+	@Override public void exitFieldKey(AbcParser.FieldKeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterHeader_beat(AbcParser.Header_beatContext ctx) { }
+	@Override public void enterHeaderBeat(AbcParser.HeaderBeatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitHeader_beat(AbcParser.Header_beatContext ctx) { }
+	@Override public void exitHeaderBeat(AbcParser.HeaderBeatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAbc_music(AbcParser.Abc_musicContext ctx) { }
+	@Override public void enterAbcMusic(AbcParser.AbcMusicContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAbc_music(AbcParser.Abc_musicContext ctx) { }
+	@Override public void exitAbcMusic(AbcParser.AbcMusicContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAbc_line(AbcParser.Abc_lineContext ctx) { }
+	@Override public void enterAbcLine(AbcParser.AbcLineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAbc_line(AbcParser.Abc_lineContext ctx) { }
+	@Override public void exitAbcLine(AbcParser.AbcLineContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVoice_change(AbcParser.Voice_changeContext ctx) { }
+	@Override public void enterVoiceChange(AbcParser.VoiceChangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVoice_change(AbcParser.Voice_changeContext ctx) { }
+	@Override public void exitVoiceChange(AbcParser.VoiceChangeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -211,13 +211,13 @@ public class AbcParserBaseListener implements AbcParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNote_element(AbcParser.Note_elementContext ctx) { }
+	@Override public void enterNoteElement(AbcParser.NoteElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNote_element(AbcParser.Note_elementContext ctx) { }
+	@Override public void exitNoteElement(AbcParser.NoteElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -235,25 +235,25 @@ public class AbcParserBaseListener implements AbcParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNote_length(AbcParser.Note_lengthContext ctx) { }
+	@Override public void enterNoteLength(AbcParser.NoteLengthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNote_length(AbcParser.Note_lengthContext ctx) { }
+	@Override public void exitNoteLength(AbcParser.NoteLengthContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNote_or_rest(AbcParser.Note_or_restContext ctx) { }
+	@Override public void enterNoteOrRest(AbcParser.NoteOrRestContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNote_or_rest(AbcParser.Note_or_restContext ctx) { }
+	@Override public void exitNoteOrRest(AbcParser.NoteOrRestContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -271,25 +271,25 @@ public class AbcParserBaseListener implements AbcParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTuplet_element(AbcParser.Tuplet_elementContext ctx) { }
+	@Override public void enterTupletElement(AbcParser.TupletElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTuplet_element(AbcParser.Tuplet_elementContext ctx) { }
+	@Override public void exitTupletElement(AbcParser.TupletElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTuplet_spec(AbcParser.Tuplet_specContext ctx) { }
+	@Override public void enterTupletSpec(AbcParser.TupletSpecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTuplet_spec(AbcParser.Tuplet_specContext ctx) { }
+	@Override public void exitTupletSpec(AbcParser.TupletSpecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -319,13 +319,13 @@ public class AbcParserBaseListener implements AbcParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNth_repeat(AbcParser.Nth_repeatContext ctx) { }
+	@Override public void enterNthRepeat(AbcParser.NthRepeatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNth_repeat(AbcParser.Nth_repeatContext ctx) { }
+	@Override public void exitNthRepeat(AbcParser.NthRepeatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

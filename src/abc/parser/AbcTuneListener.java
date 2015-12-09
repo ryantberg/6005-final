@@ -3,6 +3,7 @@ package abc.parser;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,6 +37,18 @@ public class AbcTuneListener extends AbcParserBaseListener {
      */
     private static final int TEMPO_DEFAULT = 100;
 
+    /**
+     * The threshold for resolving the default beat length.
+     * If meter is below, default length is 1/16.
+     * If meter is above, default length is 1/8.
+     */
+    private static final Double EIGHTH_SIXTEENTH_THRESHOLD = .75;
+
+    /**
+     * The default name for the default voice.
+     */
+    private static final String DEFAULT_DEFAULT_VOICE_NAME = "default";
+    
     /**
      * The result of the parse.
      * Set when the parse is finished.
@@ -126,6 +139,18 @@ public class AbcTuneListener extends AbcParserBaseListener {
      */
     private int tempoBeatsPerMinute;
     
+    // Used during music parsing
+    /**
+     * The sequence of playables for the current line.
+     */
+    private List<Playable> currentLine;
+
+    /**
+     * The voice currently being used.
+     * Starts out being the default voice.
+     */
+    private String currentVoice;
+    
     /**
      * Construct an AbcTuneListener.
      */
@@ -141,7 +166,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * Sets the number field.
 	 */
-	@Override public void exitField_number(final AbcParser.Field_numberContext ctx) {
+	@Override public void exitFieldNumber(final AbcParser.FieldNumberContext ctx) {
 	    assert !this.lastParsedNumberStack.isEmpty();
 	    
 	    this.trackNumber = this.lastParsedNumberStack.pop();
@@ -152,7 +177,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * Sets the title field.
 	 */
-	@Override public void exitField_title(final AbcParser.Field_titleContext ctx) {
+	@Override public void exitFieldTitle(final AbcParser.FieldTitleContext ctx) {
 	    this.title = ctx.TEXT().getText();
 	}
 
@@ -161,7 +186,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * Sets the composer field.
 	 */
-	@Override public void exitField_composer(final AbcParser.Field_composerContext ctx) {
+	@Override public void exitFieldComposer(final AbcParser.FieldComposerContext ctx) {
 	    this.composer = ctx.TEXT().getText();
 	}
 
@@ -170,7 +195,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * Sets the default length field.
 	 */
-	@Override public void exitField_default_length(final AbcParser.Field_default_lengthContext ctx) {
+	@Override public void exitFieldDefaultLength(final AbcParser.FieldDefaultLengthContext ctx) {
 	    this.defaultLength = this.popFraction();
 	}
 
@@ -179,7 +204,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * Sets the meter field.
 	 */
-	@Override public void exitField_meter(final AbcParser.Field_meterContext ctx) {
+	@Override public void exitFieldMeter(final AbcParser.FieldMeterContext ctx) {
 	    if (ctx.METER_SHORTHAND() != null) {
 	        switch (ctx.METER_SHORTHAND().getText()) {
 	        case "C":
@@ -202,7 +227,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 * Sets the fields that will be used to compute the tempo at the end of header
 	 * parsing.
 	 */
-	@Override public void exitField_tempo(final AbcParser.Field_tempoContext ctx) {
+	@Override public void exitFieldTempo(final AbcParser.FieldTempoContext ctx) {
 	    assert !this.lastParsedNumberStack.isEmpty();
 	    
 	    this.tempoBeat = this.popFraction();
@@ -214,7 +239,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * Parse a header beat into the lastParsedFraction.
 	 */
-	@Override public void exitHeader_beat(final AbcParser.Header_beatContext ctx) {
+	@Override public void exitHeaderBeat(final AbcParser.HeaderBeatContext ctx) {
 	    assert this.lastParsedFraction == null;
 	    
 	    final Integer denominator = this.lastParsedNumberStack.pop();
@@ -228,7 +253,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 * 
 	 * Adds a voice to the set of voice names.
 	 */
-	@Override public void exitField_voice(AbcParser.Field_voiceContext ctx) {
+	@Override public void exitFieldVoice(AbcParser.FieldVoiceContext ctx) {
 	    this.voiceNames.add(ctx.TEXT().getText());
 	}
 
@@ -237,7 +262,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitField_key(AbcParser.Field_keyContext ctx) {
+	@Override public void exitFieldKey(AbcParser.FieldKeyContext ctx) {
 	    this.key = ctx.KEY().getText();
 	}
 
@@ -246,7 +271,7 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	 * 
 	 * Ensures that all fields have been set and prepares parser to parse music.
 	 */
-	@Override public void exitAbc_header(AbcParser.Abc_headerContext ctx) {
+	@Override public void exitAbcHeader(AbcParser.AbcHeaderContext ctx) {
 	    assert this.trackNumber != null;
 	    assert this.title != null;
 	    assert this.key != null;
@@ -266,7 +291,24 @@ public class AbcTuneListener extends AbcParserBaseListener {
 	    if (this.defaultLength == null) {
 	        this.defaultLength = resolveDefaultLength(this.meter);
 	    }
+	    
+	    // add default voice 
+	    final String defaultVoice = resolveDefaultVoice(this.voiceNames);
+	    
+	    this.voiceNames.add(defaultVoice);
+	    
+	    // set current voice to default voice
+	    this.currentVoice = defaultVoice;
 	}
+	
+	@Override public void enterVoiceChange(AbcParser.VoiceChangeContext ctx) {
+	    final String newVoice = ctx.TEXT().getText();
+	    
+	    assert this.voiceNames.contains(newVoice);
+	    
+	    this.currentVoice = newVoice;
+	}
+	
 
     /**
      * @return the parsed tune
@@ -295,13 +337,6 @@ public class AbcTuneListener extends AbcParserBaseListener {
 
         return result;
     }
-    
-    /**
-     * The threshold for resolving the default beat length.
-     * If meter is below, default length is 1/16.
-     * If meter is above, default length is 1/8.
-     */
-    private static final Double EIGHTH_SIXTEENTH_THRESHOLD = .75;
 
     /**
      * Compute the default defaultLength of a beat for a given meter.
@@ -317,4 +352,29 @@ public class AbcTuneListener extends AbcParserBaseListener {
         }
     }
 
+    /**
+     * Ensure that the default name is hygenic; that is to say, that it
+     * doesn't overlap with a user-defined voice.
+     * @param definedVoices voice names we have to avoid
+     * @return a name for the default voice
+     */
+    protected static String resolveDefaultVoice(Set<String> definedVoices) {
+        // if they haven't defined a name "default" (which they probably haven't),
+        // use the name "default" for the default voice
+        if (!definedVoices.contains(DEFAULT_DEFAULT_VOICE_NAME)) {
+            return DEFAULT_DEFAULT_VOICE_NAME;
+        }
+        
+        // try "default1", "default2", etc. until we find one they haven't used.
+        // If they have defined INT_MAX/2 voices named "default1", "default2"...
+        // then they're pathological.
+        for (int i = 0; i > 0; i++) {
+            String nextAttempt = DEFAULT_DEFAULT_VOICE_NAME + i;
+            if (!definedVoices.contains(nextAttempt)) {
+                return nextAttempt;
+            }
+        }
+        
+        throw new RuntimeException("Can't create a default voice name");
+    }
 }

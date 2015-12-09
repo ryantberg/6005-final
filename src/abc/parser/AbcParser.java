@@ -27,21 +27,20 @@ public class AbcParser extends Parser {
 		HEADER_COMMENT=24, HEADER_WHITESPACE=25, HEADER_NUMBER=26, HEADER_SLASH=27, 
 		METER_SHORTHAND=28, EQUALS=29, KEY=30, TEXT=31;
 	public static final int
-		RULE_abc_tune = 0, RULE_abc_header = 1, RULE_field_number = 2, RULE_field_title = 3, 
-		RULE_other_fields = 4, RULE_field_composer = 5, RULE_field_default_length = 6, 
-		RULE_field_meter = 7, RULE_field_tempo = 8, RULE_field_voice = 9, RULE_field_key = 10, 
-		RULE_header_beat = 11, RULE_abc_music = 12, RULE_abc_line = 13, RULE_voice_change = 14, 
-		RULE_element = 15, RULE_note_element = 16, RULE_note = 17, RULE_note_length = 18, 
-		RULE_note_or_rest = 19, RULE_pitch = 20, RULE_tuplet_element = 21, RULE_tuplet_spec = 22, 
-		RULE_chord = 23, RULE_barline = 24, RULE_nth_repeat = 25, RULE_eol = 26, 
+		RULE_abcTune = 0, RULE_abcHeader = 1, RULE_fieldNumber = 2, RULE_fieldTitle = 3, 
+		RULE_otherFields = 4, RULE_fieldComposer = 5, RULE_fieldDefaultLength = 6, 
+		RULE_fieldMeter = 7, RULE_fieldTempo = 8, RULE_fieldVoice = 9, RULE_fieldKey = 10, 
+		RULE_headerBeat = 11, RULE_abcMusic = 12, RULE_abcLine = 13, RULE_voiceChange = 14, 
+		RULE_element = 15, RULE_noteElement = 16, RULE_note = 17, RULE_noteLength = 18, 
+		RULE_noteOrRest = 19, RULE_pitch = 20, RULE_tupletElement = 21, RULE_tupletSpec = 22, 
+		RULE_chord = 23, RULE_barline = 24, RULE_nthRepeat = 25, RULE_eol = 26, 
 		RULE_number = 27, RULE_slash = 28;
 	public static final String[] ruleNames = {
-		"abc_tune", "abc_header", "field_number", "field_title", "other_fields", 
-		"field_composer", "field_default_length", "field_meter", "field_tempo", 
-		"field_voice", "field_key", "header_beat", "abc_music", "abc_line", "voice_change", 
-		"element", "note_element", "note", "note_length", "note_or_rest", "pitch", 
-		"tuplet_element", "tuplet_spec", "chord", "barline", "nth_repeat", "eol", 
-		"number", "slash"
+		"abcTune", "abcHeader", "fieldNumber", "fieldTitle", "otherFields", "fieldComposer", 
+		"fieldDefaultLength", "fieldMeter", "fieldTempo", "fieldVoice", "fieldKey", 
+		"headerBeat", "abcMusic", "abcLine", "voiceChange", "element", "noteElement", 
+		"note", "noteLength", "noteOrRest", "pitch", "tupletElement", "tupletSpec", 
+		"chord", "barline", "nthRepeat", "eol", "number", "slash"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -119,33 +118,33 @@ public class AbcParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
-	public static class Abc_tuneContext extends ParserRuleContext {
-		public Abc_headerContext abc_header() {
-			return getRuleContext(Abc_headerContext.class,0);
+	public static class AbcTuneContext extends ParserRuleContext {
+		public AbcHeaderContext abcHeader() {
+			return getRuleContext(AbcHeaderContext.class,0);
 		}
-		public Abc_musicContext abc_music() {
-			return getRuleContext(Abc_musicContext.class,0);
+		public AbcMusicContext abcMusic() {
+			return getRuleContext(AbcMusicContext.class,0);
 		}
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Abc_tuneContext(ParserRuleContext parent, int invokingState) {
+		public AbcTuneContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_abc_tune; }
+		@Override public int getRuleIndex() { return RULE_abcTune; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbc_tune(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbcTune(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbc_tune(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbcTune(this);
 		}
 	}
 
-	public final Abc_tuneContext abc_tune() throws RecognitionException {
-		Abc_tuneContext _localctx = new Abc_tuneContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_abc_tune);
+	public final AbcTuneContext abcTune() throws RecognitionException {
+		AbcTuneContext _localctx = new AbcTuneContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_abcTune);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -160,9 +159,9 @@ public class AbcParser extends Parser {
 			}
 
 			setState(61);
-			abc_header();
+			abcHeader();
 			setState(62);
-			abc_music();
+			abcMusic();
 			}
 		}
 		catch (RecognitionException re) {
@@ -176,47 +175,47 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Abc_headerContext extends ParserRuleContext {
-		public Field_numberContext field_number() {
-			return getRuleContext(Field_numberContext.class,0);
+	public static class AbcHeaderContext extends ParserRuleContext {
+		public FieldNumberContext fieldNumber() {
+			return getRuleContext(FieldNumberContext.class,0);
 		}
-		public Field_titleContext field_title() {
-			return getRuleContext(Field_titleContext.class,0);
+		public FieldTitleContext fieldTitle() {
+			return getRuleContext(FieldTitleContext.class,0);
 		}
-		public Field_keyContext field_key() {
-			return getRuleContext(Field_keyContext.class,0);
+		public FieldKeyContext fieldKey() {
+			return getRuleContext(FieldKeyContext.class,0);
 		}
-		public List<Other_fieldsContext> other_fields() {
-			return getRuleContexts(Other_fieldsContext.class);
+		public List<OtherFieldsContext> otherFields() {
+			return getRuleContexts(OtherFieldsContext.class);
 		}
-		public Other_fieldsContext other_fields(int i) {
-			return getRuleContext(Other_fieldsContext.class,i);
+		public OtherFieldsContext otherFields(int i) {
+			return getRuleContext(OtherFieldsContext.class,i);
 		}
-		public Abc_headerContext(ParserRuleContext parent, int invokingState) {
+		public AbcHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_abc_header; }
+		@Override public int getRuleIndex() { return RULE_abcHeader; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbc_header(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbcHeader(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbc_header(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbcHeader(this);
 		}
 	}
 
-	public final Abc_headerContext abc_header() throws RecognitionException {
-		Abc_headerContext _localctx = new Abc_headerContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_abc_header);
+	public final AbcHeaderContext abcHeader() throws RecognitionException {
+		AbcHeaderContext _localctx = new AbcHeaderContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_abcHeader);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(64);
-			field_number();
+			fieldNumber();
 			setState(65);
-			field_title();
+			fieldTitle();
 			setState(69);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -224,7 +223,7 @@ public class AbcParser extends Parser {
 				{
 				{
 				setState(66);
-				other_fields();
+				otherFields();
 				}
 				}
 				setState(71);
@@ -232,7 +231,7 @@ public class AbcParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(72);
-			field_key();
+			fieldKey();
 			}
 		}
 		catch (RecognitionException re) {
@@ -246,7 +245,7 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_numberContext extends ParserRuleContext {
+	public static class FieldNumberContext extends ParserRuleContext {
 		public TerminalNode NUMBER_LABEL() { return getToken(AbcParser.NUMBER_LABEL, 0); }
 		public NumberContext number() {
 			return getRuleContext(NumberContext.class,0);
@@ -254,23 +253,23 @@ public class AbcParser extends Parser {
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_numberContext(ParserRuleContext parent, int invokingState) {
+		public FieldNumberContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_number; }
+		@Override public int getRuleIndex() { return RULE_fieldNumber; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_number(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldNumber(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_number(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldNumber(this);
 		}
 	}
 
-	public final Field_numberContext field_number() throws RecognitionException {
-		Field_numberContext _localctx = new Field_numberContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_field_number);
+	public final FieldNumberContext fieldNumber() throws RecognitionException {
+		FieldNumberContext _localctx = new FieldNumberContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_fieldNumber);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -293,29 +292,29 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_titleContext extends ParserRuleContext {
+	public static class FieldTitleContext extends ParserRuleContext {
 		public TerminalNode TITLE_LABEL() { return getToken(AbcParser.TITLE_LABEL, 0); }
 		public TerminalNode TEXT() { return getToken(AbcParser.TEXT, 0); }
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_titleContext(ParserRuleContext parent, int invokingState) {
+		public FieldTitleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_title; }
+		@Override public int getRuleIndex() { return RULE_fieldTitle; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_title(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldTitle(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_title(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldTitle(this);
 		}
 	}
 
-	public final Field_titleContext field_title() throws RecognitionException {
-		Field_titleContext _localctx = new Field_titleContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_field_title);
+	public final FieldTitleContext fieldTitle() throws RecognitionException {
+		FieldTitleContext _localctx = new FieldTitleContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_fieldTitle);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -338,39 +337,39 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Other_fieldsContext extends ParserRuleContext {
-		public Field_composerContext field_composer() {
-			return getRuleContext(Field_composerContext.class,0);
+	public static class OtherFieldsContext extends ParserRuleContext {
+		public FieldComposerContext fieldComposer() {
+			return getRuleContext(FieldComposerContext.class,0);
 		}
-		public Field_default_lengthContext field_default_length() {
-			return getRuleContext(Field_default_lengthContext.class,0);
+		public FieldDefaultLengthContext fieldDefaultLength() {
+			return getRuleContext(FieldDefaultLengthContext.class,0);
 		}
-		public Field_meterContext field_meter() {
-			return getRuleContext(Field_meterContext.class,0);
+		public FieldMeterContext fieldMeter() {
+			return getRuleContext(FieldMeterContext.class,0);
 		}
-		public Field_tempoContext field_tempo() {
-			return getRuleContext(Field_tempoContext.class,0);
+		public FieldTempoContext fieldTempo() {
+			return getRuleContext(FieldTempoContext.class,0);
 		}
-		public Field_voiceContext field_voice() {
-			return getRuleContext(Field_voiceContext.class,0);
+		public FieldVoiceContext fieldVoice() {
+			return getRuleContext(FieldVoiceContext.class,0);
 		}
-		public Other_fieldsContext(ParserRuleContext parent, int invokingState) {
+		public OtherFieldsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_other_fields; }
+		@Override public int getRuleIndex() { return RULE_otherFields; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterOther_fields(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterOtherFields(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitOther_fields(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitOtherFields(this);
 		}
 	}
 
-	public final Other_fieldsContext other_fields() throws RecognitionException {
-		Other_fieldsContext _localctx = new Other_fieldsContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_other_fields);
+	public final OtherFieldsContext otherFields() throws RecognitionException {
+		OtherFieldsContext _localctx = new OtherFieldsContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_otherFields);
 		try {
 			setState(87);
 			switch (_input.LA(1)) {
@@ -378,35 +377,35 @@ public class AbcParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(82);
-				field_composer();
+				fieldComposer();
 				}
 				break;
 			case LENGTH_LABEL:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(83);
-				field_default_length();
+				fieldDefaultLength();
 				}
 				break;
 			case METER_LABEL:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(84);
-				field_meter();
+				fieldMeter();
 				}
 				break;
 			case TEMPO_LABEL:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(85);
-				field_tempo();
+				fieldTempo();
 				}
 				break;
 			case VOICE_LABEL:
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(86);
-				field_voice();
+				fieldVoice();
 				}
 				break;
 			default:
@@ -424,29 +423,29 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_composerContext extends ParserRuleContext {
+	public static class FieldComposerContext extends ParserRuleContext {
 		public TerminalNode COMPOSER_LABEL() { return getToken(AbcParser.COMPOSER_LABEL, 0); }
 		public TerminalNode TEXT() { return getToken(AbcParser.TEXT, 0); }
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_composerContext(ParserRuleContext parent, int invokingState) {
+		public FieldComposerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_composer; }
+		@Override public int getRuleIndex() { return RULE_fieldComposer; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_composer(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldComposer(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_composer(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldComposer(this);
 		}
 	}
 
-	public final Field_composerContext field_composer() throws RecognitionException {
-		Field_composerContext _localctx = new Field_composerContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_field_composer);
+	public final FieldComposerContext fieldComposer() throws RecognitionException {
+		FieldComposerContext _localctx = new FieldComposerContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_fieldComposer);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -469,38 +468,38 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_default_lengthContext extends ParserRuleContext {
+	public static class FieldDefaultLengthContext extends ParserRuleContext {
 		public TerminalNode LENGTH_LABEL() { return getToken(AbcParser.LENGTH_LABEL, 0); }
-		public Header_beatContext header_beat() {
-			return getRuleContext(Header_beatContext.class,0);
+		public HeaderBeatContext headerBeat() {
+			return getRuleContext(HeaderBeatContext.class,0);
 		}
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_default_lengthContext(ParserRuleContext parent, int invokingState) {
+		public FieldDefaultLengthContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_default_length; }
+		@Override public int getRuleIndex() { return RULE_fieldDefaultLength; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_default_length(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldDefaultLength(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_default_length(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldDefaultLength(this);
 		}
 	}
 
-	public final Field_default_lengthContext field_default_length() throws RecognitionException {
-		Field_default_lengthContext _localctx = new Field_default_lengthContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_field_default_length);
+	public final FieldDefaultLengthContext fieldDefaultLength() throws RecognitionException {
+		FieldDefaultLengthContext _localctx = new FieldDefaultLengthContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_fieldDefaultLength);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(93);
 			match(LENGTH_LABEL);
 			setState(94);
-			header_beat();
+			headerBeat();
 			setState(95);
 			eol();
 			}
@@ -516,32 +515,32 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_meterContext extends ParserRuleContext {
+	public static class FieldMeterContext extends ParserRuleContext {
 		public TerminalNode METER_LABEL() { return getToken(AbcParser.METER_LABEL, 0); }
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
 		public TerminalNode METER_SHORTHAND() { return getToken(AbcParser.METER_SHORTHAND, 0); }
-		public Header_beatContext header_beat() {
-			return getRuleContext(Header_beatContext.class,0);
+		public HeaderBeatContext headerBeat() {
+			return getRuleContext(HeaderBeatContext.class,0);
 		}
-		public Field_meterContext(ParserRuleContext parent, int invokingState) {
+		public FieldMeterContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_meter; }
+		@Override public int getRuleIndex() { return RULE_fieldMeter; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_meter(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldMeter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_meter(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldMeter(this);
 		}
 	}
 
-	public final Field_meterContext field_meter() throws RecognitionException {
-		Field_meterContext _localctx = new Field_meterContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_field_meter);
+	public final FieldMeterContext fieldMeter() throws RecognitionException {
+		FieldMeterContext _localctx = new FieldMeterContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_fieldMeter);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -559,7 +558,7 @@ public class AbcParser extends Parser {
 			case HEADER_NUMBER:
 				{
 				setState(99);
-				header_beat();
+				headerBeat();
 				}
 				break;
 			default:
@@ -580,10 +579,10 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_tempoContext extends ParserRuleContext {
+	public static class FieldTempoContext extends ParserRuleContext {
 		public TerminalNode TEMPO_LABEL() { return getToken(AbcParser.TEMPO_LABEL, 0); }
-		public Header_beatContext header_beat() {
-			return getRuleContext(Header_beatContext.class,0);
+		public HeaderBeatContext headerBeat() {
+			return getRuleContext(HeaderBeatContext.class,0);
 		}
 		public TerminalNode EQUALS() { return getToken(AbcParser.EQUALS, 0); }
 		public NumberContext number() {
@@ -592,30 +591,30 @@ public class AbcParser extends Parser {
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_tempoContext(ParserRuleContext parent, int invokingState) {
+		public FieldTempoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_tempo; }
+		@Override public int getRuleIndex() { return RULE_fieldTempo; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_tempo(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldTempo(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_tempo(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldTempo(this);
 		}
 	}
 
-	public final Field_tempoContext field_tempo() throws RecognitionException {
-		Field_tempoContext _localctx = new Field_tempoContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_field_tempo);
+	public final FieldTempoContext fieldTempo() throws RecognitionException {
+		FieldTempoContext _localctx = new FieldTempoContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_fieldTempo);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(104);
 			match(TEMPO_LABEL);
 			setState(105);
-			header_beat();
+			headerBeat();
 			setState(106);
 			match(EQUALS);
 			setState(107);
@@ -635,29 +634,29 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_voiceContext extends ParserRuleContext {
+	public static class FieldVoiceContext extends ParserRuleContext {
 		public TerminalNode VOICE_LABEL() { return getToken(AbcParser.VOICE_LABEL, 0); }
 		public TerminalNode TEXT() { return getToken(AbcParser.TEXT, 0); }
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_voiceContext(ParserRuleContext parent, int invokingState) {
+		public FieldVoiceContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_voice; }
+		@Override public int getRuleIndex() { return RULE_fieldVoice; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_voice(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldVoice(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_voice(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldVoice(this);
 		}
 	}
 
-	public final Field_voiceContext field_voice() throws RecognitionException {
-		Field_voiceContext _localctx = new Field_voiceContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_field_voice);
+	public final FieldVoiceContext fieldVoice() throws RecognitionException {
+		FieldVoiceContext _localctx = new FieldVoiceContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_fieldVoice);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -680,29 +679,29 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Field_keyContext extends ParserRuleContext {
+	public static class FieldKeyContext extends ParserRuleContext {
 		public TerminalNode KEY_LABEL() { return getToken(AbcParser.KEY_LABEL, 0); }
 		public TerminalNode KEY() { return getToken(AbcParser.KEY, 0); }
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Field_keyContext(ParserRuleContext parent, int invokingState) {
+		public FieldKeyContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_field_key; }
+		@Override public int getRuleIndex() { return RULE_fieldKey; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterField_key(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterFieldKey(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitField_key(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitFieldKey(this);
 		}
 	}
 
-	public final Field_keyContext field_key() throws RecognitionException {
-		Field_keyContext _localctx = new Field_keyContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_field_key);
+	public final FieldKeyContext fieldKey() throws RecognitionException {
+		FieldKeyContext _localctx = new FieldKeyContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_fieldKey);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -725,7 +724,7 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Header_beatContext extends ParserRuleContext {
+	public static class HeaderBeatContext extends ParserRuleContext {
 		public List<NumberContext> number() {
 			return getRuleContexts(NumberContext.class);
 		}
@@ -735,23 +734,23 @@ public class AbcParser extends Parser {
 		public SlashContext slash() {
 			return getRuleContext(SlashContext.class,0);
 		}
-		public Header_beatContext(ParserRuleContext parent, int invokingState) {
+		public HeaderBeatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_header_beat; }
+		@Override public int getRuleIndex() { return RULE_headerBeat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterHeader_beat(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterHeaderBeat(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitHeader_beat(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitHeaderBeat(this);
 		}
 	}
 
-	public final Header_beatContext header_beat() throws RecognitionException {
-		Header_beatContext _localctx = new Header_beatContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_header_beat);
+	public final HeaderBeatContext headerBeat() throws RecognitionException {
+		HeaderBeatContext _localctx = new HeaderBeatContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_headerBeat);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -774,36 +773,36 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Abc_musicContext extends ParserRuleContext {
-		public List<Abc_lineContext> abc_line() {
-			return getRuleContexts(Abc_lineContext.class);
+	public static class AbcMusicContext extends ParserRuleContext {
+		public List<AbcLineContext> abcLine() {
+			return getRuleContexts(AbcLineContext.class);
 		}
-		public Abc_lineContext abc_line(int i) {
-			return getRuleContext(Abc_lineContext.class,i);
+		public AbcLineContext abcLine(int i) {
+			return getRuleContext(AbcLineContext.class,i);
 		}
-		public List<Voice_changeContext> voice_change() {
-			return getRuleContexts(Voice_changeContext.class);
+		public List<VoiceChangeContext> voiceChange() {
+			return getRuleContexts(VoiceChangeContext.class);
 		}
-		public Voice_changeContext voice_change(int i) {
-			return getRuleContext(Voice_changeContext.class,i);
+		public VoiceChangeContext voiceChange(int i) {
+			return getRuleContext(VoiceChangeContext.class,i);
 		}
-		public Abc_musicContext(ParserRuleContext parent, int invokingState) {
+		public AbcMusicContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_abc_music; }
+		@Override public int getRuleIndex() { return RULE_abcMusic; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbc_music(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbcMusic(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbc_music(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbcMusic(this);
 		}
 	}
 
-	public final Abc_musicContext abc_music() throws RecognitionException {
-		Abc_musicContext _localctx = new Abc_musicContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_abc_music);
+	public final AbcMusicContext abcMusic() throws RecognitionException {
+		AbcMusicContext _localctx = new AbcMusicContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_abcMusic);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -825,13 +824,13 @@ public class AbcParser extends Parser {
 				case NTH_REPEAT:
 					{
 					setState(122);
-					abc_line();
+					abcLine();
 					}
 					break;
 				case VOICE_LABEL:
 					{
 					setState(123);
-					voice_change();
+					voiceChange();
 					}
 					break;
 				default:
@@ -855,7 +854,7 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Abc_lineContext extends ParserRuleContext {
+	public static class AbcLineContext extends ParserRuleContext {
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
@@ -865,23 +864,23 @@ public class AbcParser extends Parser {
 		public ElementContext element(int i) {
 			return getRuleContext(ElementContext.class,i);
 		}
-		public Abc_lineContext(ParserRuleContext parent, int invokingState) {
+		public AbcLineContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_abc_line; }
+		@Override public int getRuleIndex() { return RULE_abcLine; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbc_line(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterAbcLine(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbc_line(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitAbcLine(this);
 		}
 	}
 
-	public final Abc_lineContext abc_line() throws RecognitionException {
-		Abc_lineContext _localctx = new Abc_lineContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_abc_line);
+	public final AbcLineContext abcLine() throws RecognitionException {
+		AbcLineContext _localctx = new AbcLineContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_abcLine);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -915,29 +914,29 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Voice_changeContext extends ParserRuleContext {
+	public static class VoiceChangeContext extends ParserRuleContext {
 		public TerminalNode VOICE_LABEL() { return getToken(AbcParser.VOICE_LABEL, 0); }
 		public TerminalNode TEXT() { return getToken(AbcParser.TEXT, 0); }
 		public EolContext eol() {
 			return getRuleContext(EolContext.class,0);
 		}
-		public Voice_changeContext(ParserRuleContext parent, int invokingState) {
+		public VoiceChangeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_voice_change; }
+		@Override public int getRuleIndex() { return RULE_voiceChange; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterVoice_change(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterVoiceChange(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitVoice_change(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitVoiceChange(this);
 		}
 	}
 
-	public final Voice_changeContext voice_change() throws RecognitionException {
-		Voice_changeContext _localctx = new Voice_changeContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_voice_change);
+	public final VoiceChangeContext voiceChange() throws RecognitionException {
+		VoiceChangeContext _localctx = new VoiceChangeContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_voiceChange);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -961,17 +960,17 @@ public class AbcParser extends Parser {
 	}
 
 	public static class ElementContext extends ParserRuleContext {
-		public Note_elementContext note_element() {
-			return getRuleContext(Note_elementContext.class,0);
+		public NoteElementContext noteElement() {
+			return getRuleContext(NoteElementContext.class,0);
 		}
-		public Tuplet_elementContext tuplet_element() {
-			return getRuleContext(Tuplet_elementContext.class,0);
+		public TupletElementContext tupletElement() {
+			return getRuleContext(TupletElementContext.class,0);
 		}
 		public BarlineContext barline() {
 			return getRuleContext(BarlineContext.class,0);
 		}
-		public Nth_repeatContext nth_repeat() {
-			return getRuleContext(Nth_repeatContext.class,0);
+		public NthRepeatContext nthRepeat() {
+			return getRuleContext(NthRepeatContext.class,0);
 		}
 		public TerminalNode WHITESPACE() { return getToken(AbcParser.WHITESPACE, 0); }
 		public ElementContext(ParserRuleContext parent, int invokingState) {
@@ -1001,14 +1000,14 @@ public class AbcParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(139);
-				note_element();
+				noteElement();
 				}
 				break;
 			case TUPLET_START:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(140);
-				tuplet_element();
+				tupletElement();
 				}
 				break;
 			case BARLINE:
@@ -1022,7 +1021,7 @@ public class AbcParser extends Parser {
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(142);
-				nth_repeat();
+				nthRepeat();
 				}
 				break;
 			case WHITESPACE:
@@ -1047,30 +1046,30 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Note_elementContext extends ParserRuleContext {
+	public static class NoteElementContext extends ParserRuleContext {
 		public NoteContext note() {
 			return getRuleContext(NoteContext.class,0);
 		}
 		public ChordContext chord() {
 			return getRuleContext(ChordContext.class,0);
 		}
-		public Note_elementContext(ParserRuleContext parent, int invokingState) {
+		public NoteElementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_note_element; }
+		@Override public int getRuleIndex() { return RULE_noteElement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNote_element(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNoteElement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNote_element(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNoteElement(this);
 		}
 	}
 
-	public final Note_elementContext note_element() throws RecognitionException {
-		Note_elementContext _localctx = new Note_elementContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_note_element);
+	public final NoteElementContext noteElement() throws RecognitionException {
+		NoteElementContext _localctx = new NoteElementContext(_ctx, getState());
+		enterRule(_localctx, 32, RULE_noteElement);
 		try {
 			setState(148);
 			switch (_input.LA(1)) {
@@ -1106,11 +1105,11 @@ public class AbcParser extends Parser {
 	}
 
 	public static class NoteContext extends ParserRuleContext {
-		public Note_or_restContext note_or_rest() {
-			return getRuleContext(Note_or_restContext.class,0);
+		public NoteOrRestContext noteOrRest() {
+			return getRuleContext(NoteOrRestContext.class,0);
 		}
-		public Note_lengthContext note_length() {
-			return getRuleContext(Note_lengthContext.class,0);
+		public NoteLengthContext noteLength() {
+			return getRuleContext(NoteLengthContext.class,0);
 		}
 		public NoteContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1134,13 +1133,13 @@ public class AbcParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(150);
-			note_or_rest();
+			noteOrRest();
 			setState(152);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUMBER) | (1L << SLASH) | (1L << HEADER_NUMBER) | (1L << HEADER_SLASH))) != 0)) {
 				{
 				setState(151);
-				note_length();
+				noteLength();
 				}
 			}
 
@@ -1157,7 +1156,7 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Note_lengthContext extends ParserRuleContext {
+	public static class NoteLengthContext extends ParserRuleContext {
 		public List<NumberContext> number() {
 			return getRuleContexts(NumberContext.class);
 		}
@@ -1167,23 +1166,23 @@ public class AbcParser extends Parser {
 		public SlashContext slash() {
 			return getRuleContext(SlashContext.class,0);
 		}
-		public Note_lengthContext(ParserRuleContext parent, int invokingState) {
+		public NoteLengthContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_note_length; }
+		@Override public int getRuleIndex() { return RULE_noteLength; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNote_length(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNoteLength(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNote_length(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNoteLength(this);
 		}
 	}
 
-	public final Note_lengthContext note_length() throws RecognitionException {
-		Note_lengthContext _localctx = new Note_lengthContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_note_length);
+	public final NoteLengthContext noteLength() throws RecognitionException {
+		NoteLengthContext _localctx = new NoteLengthContext(_ctx, getState());
+		enterRule(_localctx, 36, RULE_noteLength);
 		int _la;
 		try {
 			setState(162);
@@ -1235,28 +1234,28 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Note_or_restContext extends ParserRuleContext {
+	public static class NoteOrRestContext extends ParserRuleContext {
 		public PitchContext pitch() {
 			return getRuleContext(PitchContext.class,0);
 		}
 		public TerminalNode REST() { return getToken(AbcParser.REST, 0); }
-		public Note_or_restContext(ParserRuleContext parent, int invokingState) {
+		public NoteOrRestContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_note_or_rest; }
+		@Override public int getRuleIndex() { return RULE_noteOrRest; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNote_or_rest(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNoteOrRest(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNote_or_rest(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNoteOrRest(this);
 		}
 	}
 
-	public final Note_or_restContext note_or_rest() throws RecognitionException {
-		Note_or_restContext _localctx = new Note_or_restContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_note_or_rest);
+	public final NoteOrRestContext noteOrRest() throws RecognitionException {
+		NoteOrRestContext _localctx = new NoteOrRestContext(_ctx, getState());
+		enterRule(_localctx, 38, RULE_noteOrRest);
 		try {
 			setState(166);
 			switch (_input.LA(1)) {
@@ -1348,39 +1347,39 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Tuplet_elementContext extends ParserRuleContext {
-		public Tuplet_specContext tuplet_spec() {
-			return getRuleContext(Tuplet_specContext.class,0);
+	public static class TupletElementContext extends ParserRuleContext {
+		public TupletSpecContext tupletSpec() {
+			return getRuleContext(TupletSpecContext.class,0);
 		}
-		public List<Note_elementContext> note_element() {
-			return getRuleContexts(Note_elementContext.class);
+		public List<NoteElementContext> noteElement() {
+			return getRuleContexts(NoteElementContext.class);
 		}
-		public Note_elementContext note_element(int i) {
-			return getRuleContext(Note_elementContext.class,i);
+		public NoteElementContext noteElement(int i) {
+			return getRuleContext(NoteElementContext.class,i);
 		}
-		public Tuplet_elementContext(ParserRuleContext parent, int invokingState) {
+		public TupletElementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_tuplet_element; }
+		@Override public int getRuleIndex() { return RULE_tupletElement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterTuplet_element(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterTupletElement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitTuplet_element(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitTupletElement(this);
 		}
 	}
 
-	public final Tuplet_elementContext tuplet_element() throws RecognitionException {
-		Tuplet_elementContext _localctx = new Tuplet_elementContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_tuplet_element);
+	public final TupletElementContext tupletElement() throws RecognitionException {
+		TupletElementContext _localctx = new TupletElementContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_tupletElement);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(175);
-			tuplet_spec();
+			tupletSpec();
 			setState(177); 
 			_errHandler.sync(this);
 			_alt = 1;
@@ -1390,7 +1389,7 @@ public class AbcParser extends Parser {
 					{
 					{
 					setState(176);
-					note_element();
+					noteElement();
 					}
 					}
 					break;
@@ -1414,28 +1413,28 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Tuplet_specContext extends ParserRuleContext {
+	public static class TupletSpecContext extends ParserRuleContext {
 		public TerminalNode TUPLET_START() { return getToken(AbcParser.TUPLET_START, 0); }
 		public NumberContext number() {
 			return getRuleContext(NumberContext.class,0);
 		}
-		public Tuplet_specContext(ParserRuleContext parent, int invokingState) {
+		public TupletSpecContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_tuplet_spec; }
+		@Override public int getRuleIndex() { return RULE_tupletSpec; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterTuplet_spec(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterTupletSpec(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitTuplet_spec(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitTupletSpec(this);
 		}
 	}
 
-	public final Tuplet_specContext tuplet_spec() throws RecognitionException {
-		Tuplet_specContext _localctx = new Tuplet_specContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_tuplet_spec);
+	public final TupletSpecContext tupletSpec() throws RecognitionException {
+		TupletSpecContext _localctx = new TupletSpecContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_tupletSpec);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -1554,25 +1553,25 @@ public class AbcParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Nth_repeatContext extends ParserRuleContext {
+	public static class NthRepeatContext extends ParserRuleContext {
 		public TerminalNode NTH_REPEAT() { return getToken(AbcParser.NTH_REPEAT, 0); }
-		public Nth_repeatContext(ParserRuleContext parent, int invokingState) {
+		public NthRepeatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_nth_repeat; }
+		@Override public int getRuleIndex() { return RULE_nthRepeat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNth_repeat(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).enterNthRepeat(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNth_repeat(this);
+			if ( listener instanceof AbcParserListener ) ((AbcParserListener)listener).exitNthRepeat(this);
 		}
 	}
 
-	public final Nth_repeatContext nth_repeat() throws RecognitionException {
-		Nth_repeatContext _localctx = new Nth_repeatContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_nth_repeat);
+	public final NthRepeatContext nthRepeat() throws RecognitionException {
+		NthRepeatContext _localctx = new NthRepeatContext(_ctx, getState());
+		enterRule(_localctx, 50, RULE_nthRepeat);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{

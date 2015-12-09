@@ -142,11 +142,16 @@ public class KeyMap {
 
     /**
      * Look up a key with the given name.
+     * 
+     * @param name the name of the key, consisting of a start note,
+     *        an optional accidental ('b' or '#'), and an optional
+     *        minor ('m')
+     * @return a KeyMap corresponding to the key.
      */
     public static KeyMap forKeyName(String name) {
         assert standardKeys.keySet().contains(name);
 
-        return standardKeys.get(name);
+        return new KeyMap(standardKeys.get(name));
     }
     
     public String toString() {

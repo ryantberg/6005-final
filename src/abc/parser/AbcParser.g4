@@ -41,60 +41,60 @@ package abc.parser;
  */
 
 // A tune is a header and music.
-abc_tune : eol? abc_header abc_music;
+abcTune : eol? abcHeader abcMusic;
 
 /**
  * The header.
  */
-abc_header : field_number field_title other_fields* field_key;
+abcHeader : fieldNumber fieldTitle otherFields* fieldKey;
 
-field_number : NUMBER_LABEL number eol;
-field_title : TITLE_LABEL TEXT eol;
-other_fields : field_composer
-			 | field_default_length
-			 | field_meter
-			 | field_tempo
-			 | field_voice;
-field_composer : COMPOSER_LABEL TEXT eol;
-field_default_length : LENGTH_LABEL header_beat eol;
-field_meter : METER_LABEL (METER_SHORTHAND | header_beat) eol;
-field_tempo : TEMPO_LABEL header_beat EQUALS number eol;
-field_voice : VOICE_LABEL TEXT eol;
-field_key : KEY_LABEL KEY eol;
+fieldNumber : NUMBER_LABEL number eol;
+fieldTitle : TITLE_LABEL TEXT eol;
+otherFields : fieldComposer
+			 | fieldDefaultLength
+			 | fieldMeter
+			 | fieldTempo
+			 | fieldVoice;
+fieldComposer : COMPOSER_LABEL TEXT eol;
+fieldDefaultLength : LENGTH_LABEL headerBeat eol;
+fieldMeter : METER_LABEL (METER_SHORTHAND | headerBeat) eol;
+fieldTempo : TEMPO_LABEL headerBeat EQUALS number eol;
+fieldVoice : VOICE_LABEL TEXT eol;
+fieldKey : KEY_LABEL KEY eol;
 
-header_beat: number slash number;
+headerBeat: number slash number;
 
 /**
  * The music.
  */
-abc_music : (abc_line | voice_change)+;
-abc_line : element+ eol;
+abcMusic : (abcLine | voiceChange)+;
+abcLine : element+ eol;
 
 // A voice field might reappear in the middle of a piece
 // to indicate the change of a voice
-voice_change : VOICE_LABEL TEXT eol;
+voiceChange : VOICE_LABEL TEXT eol;
 
-element : note_element | tuplet_element | barline | nth_repeat | WHITESPACE ;
+element : noteElement | tupletElement | barline | nthRepeat | WHITESPACE ;
 
-note_element : note | chord;
+noteElement : note | chord;
 
 
 // note is either a pitch or a rest
-note : note_or_rest note_length?;
-note_length: number | (number? slash number?);
-note_or_rest : pitch | REST;
+note : noteOrRest noteLength?;
+noteLength: number | (number? slash number?);
+noteOrRest : pitch | REST;
 pitch : ACCIDENTAL? LETTER_NOTE OCTAVE?;
 
 // tuplets
-tuplet_element : tuplet_spec note_element+;
-tuplet_spec : TUPLET_START number ;
+tupletElement : tupletSpec noteElement+;
+tupletSpec : TUPLET_START number ;
 
 // chords
 chord : CHORD_START note+ CHORD_END;
 
 // bars and repetitions
 barline : BARLINE;
-nth_repeat: NTH_REPEAT;
+nthRepeat: NTH_REPEAT;
 
 // Compensate for lexer deficiencies.
 // end of line; after a HEADER_NEWLINE is lexed, the lexer will be in DEFAULT mode,
