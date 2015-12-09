@@ -1,12 +1,27 @@
 package abc.player;
 
-import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.BaseErrorListener;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.misc.ParseCancellationException;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+import abc.parser.AbcLexer;
+import abc.parser.AbcParser;
+import abc.parser.AbcTuneListener;
 import abc.sound.SequencePlayer;
 
 /**
@@ -14,54 +29,145 @@ import abc.sound.SequencePlayer;
  * a set of voices plus some metadata.
  */
 public class Tune {
+    private final int number;
+    private final String title;
+    private final String composer;
+    private final String key;
+    private final Fraction defaultLength;
+    private final Fraction meter;
+    private final int tempo;
+    private final Map<String, Playable> voices;
     
     /**
-     * Create a new tune from a file in abc format
+     * Parse a tune from an abc file.
+     * 
+     * @param file the file to parse
+     * @return the parsed tune
+     * @throws IOException if the file cannot be read
+     * @throws ParseCancellationException if the parse fails
      */
-    public Tune(File file){
+    public static Tune fromFile(final String file) throws IOException, ParseCancellationException {
+        final CharStream stream = new ANTLRFileStream(file);
+        final AbcLexer lexer = new AbcLexer(stream);
+        lexer.reportErrorsAsExceptions();
+
+        final AbcParser parser = new AbcParser(new CommonTokenStream(lexer));
+        parser.addErrorListener(new BaseErrorListener() {
+            public void syntaxError(Recognizer<?, ?> recognizer,
+                                    Object offendingSymbol, 
+                                    int line, int charPositionInLine,
+                                    String msg, RecognitionException e) {
+                 return;
+            }
+        });
+        parser.reportErrorsAsExceptions();
         
+        final ParseTree tree = parser.abcTune();
+        
+        final AbcTuneListener listener = new AbcTuneListener();
+        
+        new ParseTreeWalker().walk(listener, tree);
+        
+        return listener.getParsedTune();
+    }
+
+    /**
+     * Parse a tune from an abc-formatted string.
+     * 
+     * @param abcTune the abc-formatted string
+     * @return the parsed tune
+     * @throws ParseCancellationException if the parse fails
+     */
+    public static Tune fromString(final String abcTune) throws ParseCancellationException {
+        final CharStream stream = new ANTLRInputStream(abcTune);
+        final AbcLexer lexer = new AbcLexer(stream);
+        lexer.reportErrorsAsExceptions();
+
+        final AbcParser parser = new AbcParser(new CommonTokenStream(lexer));
+        parser.addErrorListener(new BaseErrorListener() {
+            public void syntaxError(Recognizer<?, ?> recognizer,
+                                    Object offendingSymbol, 
+                                    int line, int charPositionInLine,
+                                    String msg, RecognitionException e) {
+                 return;
+            }
+        });
+        parser.reportErrorsAsExceptions();
+        
+        final ParseTree tree = parser.abcTune();
+        
+        final AbcTuneListener listener = new AbcTuneListener();
+        
+        new ParseTreeWalker().walk(listener, tree);
+        
+        return listener.getParsedTune();
+    }
+    
+    /**
+     * Create a new Tune, with the given parameters.
+     * 
+     * @param number
+     * @param title
+     * @param composer
+     * @param key
+     * @param defaultLength
+     * @param meter
+     * @param tempo
+     * @param voices
+     */
+    public Tune(int number, String title, String composer, String key,
+            Fraction defaultLength, Fraction meter, int tempo,
+            Map<String, Playable> voices) {
+        this.number = number;
+        this.title = title;
+        this.composer = composer;
+        this.key = key;
+        this.defaultLength = defaultLength;
+        this.meter = meter;
+        this.tempo = tempo;
+        this.voices = new HashMap<>(voices);
     }
     
     /**
      * @return the index number of the tune
      */
     public int getNumber(){
-       throw new RuntimeException();
+        return number;
     }
     
     /**
      * @return the title of the tune
      */
     public String getTitle(){
-        throw new RuntimeException();
+        return title;
     }
     
     /**
      * @return the composer of the tune
      */
     public String getComposer(){
-        throw new RuntimeException();
+        return composer;
     }
     
     /**
      * @return the key in which the tune is to be played
      */
     public String getKey(){
-        throw new RuntimeException();
+        return key;
     }
     
     /**
      * @return the default duration of a note
      */
     public Fraction getDefaultLength(){
-        throw new RuntimeException();
+        return defaultLength;
     }
     
     /**
      * @return the meter of the tune
      */
     public Fraction getMeter(){
-        throw new RuntimeException();
+        return meter;
     }
     
     /**
@@ -69,7 +175,7 @@ public class Tune {
      * should be played per minute
      */
     public int getTempo(){
-        throw new RuntimeException();
+        return tempo;
     }
     
     /**
@@ -77,7 +183,7 @@ public class Tune {
      * of music played by that voice
      */
     public Map<String, Playable> getVoices(){
-        throw new RuntimeException();
+        return new HashMap<>(voices);
     }
     
     /**
