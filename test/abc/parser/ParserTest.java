@@ -14,6 +14,9 @@ import org.junit.Test;
 public class ParserTest {
 
     // Ensure that none of the sample_abc files fails to parse
+    /**
+     * @category no_didit
+     */
     @Test
     public void testCanParseAllSamples() throws IOException {
         final File sampleDir = new File("sample_abc/");

@@ -83,6 +83,9 @@ public class AbcTuneListenerTest {
     }
     
     // Test that we can load all the sample files.
+    /**
+     * @category no_didit
+     */
     @Test
     public void testWalksAllSamples() throws IOException {
         final File sampleDir = new File("sample_abc/");
