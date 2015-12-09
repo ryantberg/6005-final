@@ -30,6 +30,10 @@ public class KeyMap {
      * from the map.
      */
     private final Map<Pitch, Integer> pitchOffsets;
+    
+    // Safety from Rep Exposure:
+    //  Makes defensive copy of input map,
+    //  observer methods only return individual immutable Pitches
 
     /**
      * Create a new KeyMap.

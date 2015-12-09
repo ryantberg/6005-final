@@ -3,13 +3,20 @@ package abc.player;
 import java.math.BigInteger;
 
 /**
- * Immutable class to represent a fraction (musical meter or note denomination)
+ * Immutable class to represent a positive fraction (musical meter or note denomination)
  * Two Fractions are considered equal IF AND ONLY IF their numerator and denominator
  * are both equal. For instance, 1/4 is NOT EQUAL to 2/8. 
  */
 public class Fraction {
     private final int numerator; 
     private final int denominator;
+    
+    // Abstraction Function:
+    //  Represents the fraction (numerator/denominator).
+    // Rep Invariant:
+    //  Both numerator and denominator must be greater than 0.
+    // Safety from Rep Exposure:
+    //  All fields are private, immutable and final.
     
     /**
      * Create a new Fraction

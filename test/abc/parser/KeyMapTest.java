@@ -17,6 +17,13 @@ public class KeyMapTest {
             new Pitch('G')
     };
     
+    // Testing Strategy:
+    //
+    // --------forPitch--------
+    // Input: C Major (every note is the same),
+    //        keys with flats, keys with sharps,
+    //        keys with varied modifiers.
+    
     @Test
     public void testCorrectPitches() {
         final KeyMap c = KeyMap.forKeyName("C");
