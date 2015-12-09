@@ -57,4 +57,56 @@ public class FractionTest {
         assertEquals(2,sum.denominator());
     }
     
+    @Test
+    public void testMultiply() {
+        // Test random (prime) multiplication
+        Fraction a = new Fraction(29, 11);
+        Fraction b = new Fraction(37, 89);
+        Fraction ab = a.multiply(b);
+        
+        assertEquals(ab.numerator(), a.numerator()*b.numerator());
+        assertEquals(ab.denominator(), a.denominator()*b.denominator());
+        
+        // Test multiplying by oneself
+        Fraction one = new Fraction(1,1);
+
+        Fraction oneSquared = one.multiply(one);
+        
+        assertEquals(oneSquared.numerator(), 1);
+        assertEquals(oneSquared.denominator(), 1);
+        
+        // Test reduction
+        Fraction c = new Fraction(100, 200);
+        Fraction cReduced = c.multiply(one);
+        
+        assertEquals(cReduced.numerator(), 1);
+        assertEquals(cReduced.denominator(), 2);
+    }
+    
+    @Test
+    public void testInvert() {
+        // Test works and does not reduce
+        Fraction invertee = new Fraction(100, 5);
+        Fraction inverted = invertee.invert();
+        
+        assertEquals(inverted.numerator(), 5);
+        assertEquals(inverted.denominator(), 100);
+    }
+    
+    @Test
+    public void testDivide() {
+        // Test dividing by oneself yields one
+        Fraction a = new Fraction(5403, 302);
+        Fraction one = a.divide(a);
+        
+        assertEquals(one.numerator(), 1);
+        assertEquals(one.denominator(), 1);
+        
+        Fraction half = new Fraction(1, 2);
+        Fraction twentyFive = new Fraction(25, 1);
+        Fraction fiftieth = half.divide(twentyFive);
+        
+        assertEquals(fiftieth.numerator(), 1);
+        assertEquals(fiftieth.denominator(), 50);
+    }
 }

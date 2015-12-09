@@ -53,6 +53,13 @@ public class Pitch {
     public Pitch(int value) {
         this.value = value;
     }
+    
+    /**
+     * Return the integer value of the pitch.
+     */
+    public int getValue() {
+        return value;
+    }
 
     /**
      * Make a Pitch named c in the middle octave of the piano keyboard.

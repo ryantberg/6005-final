@@ -57,13 +57,11 @@ other_fields : field_composer
 			 | field_voice;
 field_composer : COMPOSER_LABEL TEXT eol;
 field_default_length : LENGTH_LABEL header_beat eol;
-field_meter : METER_LABEL meter eol;
-field_tempo : TEMPO_LABEL tempo eol;
+field_meter : METER_LABEL (METER_SHORTHAND | header_beat) eol;
+field_tempo : TEMPO_LABEL header_beat EQUALS number eol;
 field_voice : VOICE_LABEL TEXT eol;
 field_key : KEY_LABEL KEY eol;
 
-meter : METER_SHORTHAND | header_beat;
-tempo : header_beat EQUALS number;
 header_beat: number slash number;
 
 /**
