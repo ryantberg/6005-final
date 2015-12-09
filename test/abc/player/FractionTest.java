@@ -14,6 +14,16 @@ public class FractionTest {
     // --------Add--------
     // Input: Same denominator, different denominators
     // Output: Make sure original fraction is unchanged
+    //
+    // --------Multiply--------
+    // Input: same factors, different factors
+    // Output: reducible, irreducible
+    //
+    // --------Invert--------
+    // Output: Make sure it's not reduced
+    //
+    // --------Divide--------
+    // Input: divide fraction by itself, by another fraction
     
     @Test
     public void testReduce(){
